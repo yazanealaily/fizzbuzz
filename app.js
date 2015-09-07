@@ -1,32 +1,43 @@
-$(document).ready(function(){
+function fizzbuzz(num) {
 
-	$("button").on("click", function(){
+	var output = [];
 
-		var upperLimit = $(":text").val();
-		
-		for(var i = 1; i <= upperLimit; i++)
+	for(var i = 1; i <= num; i++)
 		{
 			if(i%3 === 0 && i%5 === 0)
 			{
-				$("body").append("<p>FizzBuzz</p>");
+				output[i-1] = "fizzbuzz";
 			}
 
 			else if(i%3 === 0)
 			{
-				$("body").append("<p>Fizz</p>");
+				output[i-1] = "fizz";
 			}
 
 			else if(i%5 === 0)
 			{
-				$("body").append("<p>Buzz</p>");
+				output[i-1] = "buzz";
 			}
 
 			else
 			{
-				$("body").append("<p>" + i + "</p>");
+				output[i-1] = i;
 			}		
 		}
 
+	return output;
+
+}
+
+$(document).ready(function(){
+
+	$("button").on("click", function(){
+
+		var upperLimit = parseInt($(":text").val());
+		
+		var fzbz = fizzbuzz(upperLimit);
+
+		$(".fizzbuzz").append("<p>" + fzbz + "</p>");
 	});
 
 });
